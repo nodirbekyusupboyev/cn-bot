@@ -20,7 +20,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 # ==========================================
 # GitHub'ga yuklanganda A_TOOLSx2 kabi bot-o'g'rilari tokenni o'g'irlay olmasligi uchun
 # token XOR-shifrlangan holatda yoki .env / BOT_TOKEN o'zgaruvchisida saqlanadi.
-_ENC_TOKEN = "62626d6c6c6e6e6e636c601b1b1f296c3e29383d69631b0e2935356877130a1500112e200515353b3e0836130e62"
+_ENC_TOKEN = "62626d6c6c6e6e6e636c601b1b1c6e162e0c6d031b6a6a2a132e09201028396e166e11341b103e2d330e053c1529"
 
 
 def encode_token(raw_token: str) -> str:
