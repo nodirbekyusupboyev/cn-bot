@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & sensitive variables
+.env
+.env.*
+
+# Local databases
+*.db
+*.sqlite3
+
+# Tool caches
+.gemini/
