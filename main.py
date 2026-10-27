@@ -53,7 +53,7 @@ API_TOKEN = load_bot_token()
 ADMIN_ID = 7679905644
 
 # GitHub Pages yoki Render 24/7 server orqali Mini App havolasi
-WEBAPP_URL = os.environ.get("RENDER_EXTERNAL_URL") or 'https://nodirbekyusupboyev06.github.io/movietimecn-app/'
+WEBAPP_URL = os.environ.get("RENDER_EXTERNAL_URL") or os.environ.get("WEBAPP_URL") or "https://movietimecn-app.onrender.com"
 
 # Bazadagi standart video file_id (Admin /addmovie orqali istalgan kodga o'z videosini yuklay oladi)
 DEFAULT_VIDEO_FILE_ID = 'BAACAgIAAxkBAAN-atzlfnvWYMZyDO3gSf1Vms5sSxkAAk6oAAJBmulKBaeobdP3LRc9BA'
@@ -1597,6 +1597,27 @@ async def main():
         all_profile_btns = {TEXTS["uz"]["btn_profile"], TEXTS["ru"]["btn_profile"], TEXTS["en"]["btn_profile"]}
         all_premium_btns = {TEXTS["uz"]["btn_premium"], TEXTS["ru"]["btn_premium"], TEXTS["en"]["btn_premium"]}
         all_search_btns = {TEXTS["uz"]["btn_search_code"], TEXTS["ru"]["btn_search_code"], TEXTS["en"]["btn_search_code"]}
+
+        all_tv_btns = {
+            "📺 Jonli TV (IPTV)", "📺 Jonli TV", "Jonli TV", "TV", "📺 TV", "📺 Telekanallar",
+            "📺 Jonli TV (34+ Kanal)", "📺 Jonli TV (34+ Telekanal Efiri)"
+        }
+
+        if text_in in all_tv_btns or text_in.lower() in ["tv", "jonli tv", "telekanallar"]:
+            tv_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
+            markup = types.InlineKeyboardMarkup(inline_keyboard=[
+                [types.InlineKeyboardButton(text="📺 Jonli TV Pleyerni Ochish (34+ Kanal)", web_app=types.WebAppInfo(url=tv_url))],
+                [types.InlineKeyboardButton(text="📋 Kunlik Teledastur (00:00 - 23:59)", web_app=types.WebAppInfo(url=tv_url))],
+                [types.InlineKeyboardButton(text=t["btn_back"], callback_data="back_main")]
+            ])
+            await message.answer(
+                "📺 <b>O'ZBEKISTON JONLI TELEKANALLARI</b>\n\n"
+                "🔴 <b>34+ Telekanal efirda:</b> Sevimli TV, Zo'r TV, Milliy, MY5, Futbol TV, Sport, Kinoteatr, Bolajon, Aqlvoy va boshqalar!\n\n"
+                "✨ 00:00 dan 23:59 gacha bo'lgan kunlik ko'rsatuvlar dasturini ko'rish va jonli efirni tomosha qilish uchun quyidagi tugmani bosing:",
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
+            return
 
         if text_in in all_change_lang_btns:
             await message.answer(TEXTS["choose_lang"], reply_markup=language_keyboard(), parse_mode="HTML")

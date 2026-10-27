@@ -2937,7 +2937,8 @@
         let currentLang = urlParams.get('lang') || localStorage.getItem('movitime_lang') || 'uz';
         if (!['uz', 'ru', 'en'].includes(currentLang)) currentLang = 'uz';
 
-        let currentTab = 'home';
+        const urlTab = urlParams.get('tab');
+        let currentTab = (urlTab && ['home', 'tv', 'movies', 'cartoons', 'saved'].includes(urlTab)) ? urlTab : 'home';
         let currentCategory = 'all';
         let savedCodes = [];
         try {
@@ -4219,8 +4220,10 @@
             }
 
             setTimeout(() => {
-                if (curCh.stream_url && !hlsInstance) {
-                    playTvStream(curCh.id);
+                const paramCh = urlParams.get('ch');
+                const targetCh = (paramCh && currentTvChannels.find(c => c.id === paramCh || c.epg_slug === paramCh)) || curCh;
+                if (targetCh && targetCh.stream_url) {
+                    playTvStream(targetCh.id);
                 } else {
                     updateNowPlayingBar();
                 }
