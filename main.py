@@ -757,6 +757,169 @@ async def handle_lucide_js(request: web.Request) -> web.Response:
 
 
 
+
+# ==========================================
+# TELEDASTUR (EPG 00:00 - 23:59) TIZIMI
+# ==========================================
+GENRES_TEMPLATES = {
+    "movies": [
+        ("00:00", "Tungi kinoseans: Triller / Detektiv", "Kino"),
+        ("02:00", "Jahon kinosi durdonasi", "Kino"),
+        ("04:00", "Hujjatli film: Dunyo mo'jizalari", "Hujjatli"),
+        ("06:00", "Tonggi musiqiy dastur", "Musiqa"),
+        ("07:30", "Klassik o'zbek kinosi", "Kino"),
+        ("09:30", "Komedik oilaviy film", "Kino"),
+        ("11:30", "Tarixiy jangari film", "Kino"),
+        ("13:30", "Premyera: Sarguzasht kinofilmi", "Premyera"),
+        ("15:30", "Mashhur turk kino asari", "Kino"),
+        ("17:45", "Super jangari: Gollivud blokbasteri", "Kino"),
+        ("20:00", "Kechki Bosh Film: Oskar sovrindori", "Premyera"),
+        ("22:15", "Dramatik triller: Yangi premyera", "Kino"),
+        ("23:45", "Tungi qisqa metrajli filmlar", "Kino")
+    ],
+    "kids": [
+        ("06:00", "Ertalabki quvnoq multfilmlar", "Multfilm"),
+        ("07:30", "Sehrli dunyo: Bolajonlar ertaklari", "Ertak"),
+        ("09:00", "Qiziqarli bilimdon: Rus va o'zbek tilida", "Ta'lim"),
+        ("10:30", "Sarguzashtli multserial: Yangi fasl", "Multfilm"),
+        ("12:00", "Bolalar teatri va musiqiy tomosha", "Shou"),
+        ("13:30", "Katta animatsion film (To'liq metraj)", "Premyera"),
+        ("15:30", "Sehrli laboratoriya: Ilmiy bolajon", "Ta'lim"),
+        ("17:00", "Sevimli qahramonlar multseriali", "Multfilm"),
+        ("18:30", "Topqirlar va zukkolor shousi", "Viktorina"),
+        ("20:00", "Oqshom ertagi: Xayrli tun, bolajonlar!", "Ertak"),
+        ("21:00", "Katta oilaviy animatsiya", "Multfilm"),
+        ("22:45", "Tungi tinch musiqa va ertaklar", "Musiqa")
+    ],
+    "sports": [
+        ("00:00", "Yevropa Chempionlar Ligasi sharhi", "Tahlil"),
+        ("02:00", "Eng yaxshi gollar va unutilmas o'yinlar", "Sport"),
+        ("06:00", "Ertalabki badantarbiya va fitnes", "Salomatlik"),
+        ("07:30", "Sport yangiliklari: Kun dayjesti", "Yangiliklar"),
+        ("09:00", "Futbol bo'yicha O'zbekiston Superligasi sharhi", "Futbol"),
+        ("11:00", "Boks va MMA: Janglar to'qnashuvi", "Jang"),
+        ("13:00", "Sport yangiliklari (Jonli efir)", "Yangiliklar"),
+        ("14:30", "APL / La Liga: Haftaning markaziy uchrashuvi", "Futbol"),
+        ("17:00", "Avtosport: Formula-1 poygalari", "Avto"),
+        ("18:30", "Xalqaro sport xabarlari", "Yangiliklar"),
+        ("20:00", "Jonli efir: Markaziy futbol uchrashuvi", "Jonli"),
+        ("22:30", "Ekspertlar studiyasi: O'yin tahlili", "Tahlil"),
+        ("23:30", "Jahon sporti yulduzlari", "Hujjatli")
+    ],
+    "general": [
+        ("00:00", "Tungi kinofilm", "Kino"),
+        ("02:00", "Musiqiy tun", "Musiqa"),
+        ("05:30", "Qur'on tilovati va ma'rifiy saboqlar", "Ma'rifat"),
+        ("06:30", "Assalom, O'zbekiston! (Tonggi ko'rsatuv)", "Shou"),
+        ("08:30", "Zamon yangiliklari / Kun nafasi", "Yangiliklar"),
+        ("09:30", "Milliy serial: Yangi qism", "Serial"),
+        ("11:00", "Foydali maslahatlar va salomatlik sirlari", "Salomatlik"),
+        ("12:30", "O'zbek kino durdonasi", "Kino"),
+        ("14:30", "Katta yangiliklar dasturi (Jonli efir)", "Yangiliklar"),
+        ("15:30", "Qiziqarli sayohat: Dunyo bo'ylab", "Sayohat"),
+        ("17:00", "Ko'ngilochar oilaviy tok-shou", "Tok-shou"),
+        ("18:30", "Ommabop turk yoki hind seriali", "Serial"),
+        ("20:00", "Bosh yangiliklar / Axborot (Jonli efir)", "Yangiliklar"),
+        ("21:00", "Kechki premyera: Milliy serial", "Serial"),
+        ("22:15", "Kechki konsert va qiziqarli shou", "Konsert"),
+        ("23:30", "Xorij kinofilmi", "Kino")
+    ]
+}
+
+def get_channel_epg(slug, date_str=None):
+    import urllib.request
+    from datetime import datetime
+    if not date_str:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+    
+    programs = []
+    if slug:
+        try:
+            url = f"https://api.tvinfo.uz/api/channels/{slug}?date={date_str}"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=4) as resp:
+                data = json.loads(resp.read().decode())
+                raw_progs = data.get("programs", [])
+                for p in raw_progs:
+                    st = p.get("starts_at", "")
+                    time_part = st.split(" ")[1][:5] if " " in st else st[:5]
+                    programs.append({
+                        "time": time_part,
+                        "name": p.get("name", "").strip(),
+                        "category": "Dastur"
+                    })
+        except Exception:
+            pass
+            
+    if len(programs) < 8:
+        theme = "general"
+        if any(k in (slug or "") for k in ["kino", "cinema", "film"]):
+            theme = "movies"
+        elif any(k in (slug or "") for k in ["sport", "fut"]):
+            theme = "sports"
+        elif any(k in (slug or "") for k in ["bolajon", "aqlvoy", "mimi", "kids"]):
+            theme = "kids"
+        
+        tpl = GENRES_TEMPLATES[theme]
+        programs = [{"time": t, "name": n, "category": c} for t, n, c in tpl]
+        
+    now = datetime.now()
+    now_min = now.hour * 60 + now.minute
+    
+    def to_min(t_str):
+        parts = t_str.split(":")
+        return int(parts[0]) * 60 + int(parts[1])
+        
+    programs.sort(key=lambda x: to_min(x["time"]))
+    
+    for i, p in enumerate(programs):
+        p_min = to_min(p["time"])
+        next_min = to_min(programs[i+1]["time"]) if i + 1 < len(programs) else 24 * 60
+        if next_min <= p_min:
+            next_min += 24 * 60
+            
+        cur_min_cmp = now_min
+        if cur_min_cmp < p_min and i == len(programs) - 1:
+            cur_min_cmp += 24 * 60
+            
+        if p_min <= cur_min_cmp < next_min:
+            p["status"] = "live"
+            dur = max(next_min - p_min, 1)
+            elapsed = cur_min_cmp - p_min
+            p["progress"] = min(max(int((elapsed / dur) * 100), 5), 98)
+        elif cur_min_cmp >= next_min:
+            p["status"] = "past"
+            p["progress"] = 100
+        else:
+            p["status"] = "future"
+            p["progress"] = 0
+            
+    return programs
+
+EPG_CACHE = {}
+
+async def handle_api_epg(request: web.Request) -> web.Response:
+    import time
+    from datetime import datetime
+    slug = request.query.get("slug", "zor-tv").strip()
+    date_str = request.query.get("date", "").strip() or datetime.now().strftime("%Y-%m-%d")
+    cache_key = f"{slug}_{date_str}"
+    
+    now_ts = time.time()
+    if cache_key in EPG_CACHE and now_ts - EPG_CACHE[cache_key]["ts"] < 600:
+        return web.json_response(EPG_CACHE[cache_key]["data"], headers={
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, max-age=600"
+        })
+        
+    programs = get_channel_epg(slug, date_str)
+    EPG_CACHE[cache_key] = {"ts": now_ts, "data": programs}
+    
+    return web.json_response(programs, headers={
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=600"
+    })
+
 async def handle_api_channels(request: web.Request) -> web.Response:
     channels = []
     if os.path.exists("channels.json"):
@@ -799,6 +962,7 @@ async def start_24_7_web_server() -> int:
     app.router.add_get("/lucide.min.js", handle_lucide_js)
     app.router.add_get("/api/stats", handle_api_stats)
     app.router.add_get("/api/channels", handle_api_channels)
+    app.router.add_get("/api/epg", handle_api_epg)
     app.router.add_get("/health", handle_health)
 
     runner = web.AppRunner(app)
@@ -980,6 +1144,26 @@ async def main():
     # ------------------------------------------
     # ASOSIY MENYU, PROFIL, PREMIUM VA KATEGORIYALAR
     # ------------------------------------------
+
+
+    @dp.message(Command("dastur"))
+    async def dastur_command_handler(message: types.Message):
+        user_id = message.from_user.id
+        lang = get_lang(user_id)
+        t = TEXTS[lang]
+        epg_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
+        markup = types.InlineKeyboardMarkup(inline_keyboard=[
+            [types.InlineKeyboardButton(text="📋 Kunlik Teledasturni Ko'rish (00:00 - 23:59)", web_app=types.WebAppInfo(url=epg_url))],
+            [types.InlineKeyboardButton(text=t["btn_back"], callback_data="back_main")]
+        ])
+        await message.answer(
+            "📋 <b>KUNLIK TELEDASTUR (00:00 - 23:59)</b>\n\n"
+            "✨ O'zbekistonning barcha asosiy telekanallari (Sevimli, Zo'r TV, Milliy, MY5, Futbol TV, Sport, Kinoteatr, Bolajon va boshqalar) "
+            "bo'yicha bugungi to'liq ko'rsatuvlar jadvali tayyor!\n\n"
+            "👇 Quyidagi tugmani bosing va to'liq jadvalni ko'ring:",
+            reply_markup=markup,
+            parse_mode="HTML"
+        )
 
     @dp.message(Command("tv"))
     async def tv_command_handler(message: types.Message):

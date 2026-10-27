@@ -1847,6 +1847,208 @@
             gap: 2px;
         }
 
+    
+        /* =========================================================
+           KUNLIK TELEDASTUR (EPG 00:00 - 23:59) STYLES
+           ========================================================= */
+        .epg-now-card {
+            background: rgba(17, 24, 39, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .epg-now-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .epg-now-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .epg-progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+        }
+        .epg-progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #38bdf8, #6366f1);
+            border-radius: 999px;
+            transition: width 0.3s ease;
+        }
+        .epg-next-text {
+            font-size: 11.5px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .epg-segmented-control {
+            display: flex;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 14px;
+        }
+        .epg-segment-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 9px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .epg-segment-btn.active {
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+        .epg-channels-slider {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+            scrollbar-width: none;
+        }
+        .epg-channels-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .epg-ch-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            background: rgba(23, 33, 53, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            font-size: 11.5px;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .epg-ch-pill img {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            object-fit: contain;
+            background: #fff;
+            padding: 1px;
+        }
+        .epg-ch-pill.active {
+            border-color: #38bdf8;
+            background: rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+        }
+        .epg-timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .epg-item {
+            background: rgba(23, 33, 53, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+        .epg-item.is-live {
+            background: rgba(14, 165, 233, 0.12);
+            border-color: #38bdf8;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+        }
+        .epg-item.is-past {
+            opacity: 0.65;
+        }
+        .epg-item-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 0;
+        }
+        .epg-time-badge {
+            font-size: 12px;
+            font-weight: 800;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+            padding: 3px 7px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            letter-spacing: 0.3px;
+        }
+        .epg-item.is-past .epg-time-badge {
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .epg-item-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .epg-item-cat {
+            font-size: 10.5px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+        .epg-status-tag {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 999px;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .epg-status-tag.live {
+            background: rgba(239, 68, 68, 0.9);
+            color: #fff;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+        }
+        .epg-status-tag.past {
+            background: rgba(255, 255, 255, 0.08);
+            color: #64748b;
+        }
+        .epg-status-tag.future {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
     </style>
     <script src="lucide.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -3654,12 +3856,16 @@
         window.addEventListener('load', refreshIcons);
     
         // ==========================================
-        // IPTV LIVE STREAMING DATA & CONTROLLER
+        // IPTV LIVE STREAMING & EPG (00:00 - 23:59) CONTROLLER
         // ==========================================
-        const TV_CHANNELS = [{"id": "Aqlvoy.uz@SD", "name": "Aqlvoy", "logo": "https://i.imgur.com/ekF5cAi.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1205/tracks-v1a1/mono.m3u8"}, {"id": "BIZCinema.uz@SD", "name": "BIZ Cinema (1080p)", "logo": "https://biztv.uz/static/media/biz-cinema.286b83dc.png", "category": "Movies", "stream_url": "https://fl.biztv.media/cinema_720_EMfSyXgoRdiIHgldXTZICucKTIeCKO/index.m3u8"}, {"id": "BIZMusic.uz@SD", "name": "BIZ Music (1080p)", "logo": "https://i.ibb.co/DfsCJwk/Uz-biz-music-5462.jpg", "category": "Music", "stream_url": "https://fl.biztv.media/music_720_QAKpGmVUjaPApCNjpsgBxrdqNihAkl/index.m3u8"}, {"id": "BIZTV.uz@SD", "name": "BIZ TV (1080p)", "logo": "https://biztv.uz/static/media/logo.5f993187.png", "category": "Entertainment", "stream_url": "https://fl.biztv.media/biz_tv_720_uni8jhub4h8fub4idejswh8dh3j94finbu4nidj39inwsj92in3d/index.m3u8"}, {"id": "Bolajon.uz@SD", "name": "Bolajon (576p)", "logo": "https://i.imgur.com/s7o0ifu.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1007/playlist.m3u8"}, {"id": "CheksizTV.uz@SD", "name": "Cheksiz TV", "logo": "https://i.imgur.com/f7hHmmR.jpeg", "category": "Entertainment", "stream_url": "https://fl.biztv.media/cheksiz_tv_480_unif7hujidth7f4du83jrhuid3k94j8hfj8d93eubych8eju93n4ubt/tracks-v1a1/mono.m3u8"}, {"id": "DasturxonTV.uz@SD", "name": "Dasturxon TV (576p)", "logo": "https://i.imgur.com/APM2ej5.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8"}, {"id": "Dunyoboylab.uz@SD", "name": "Dunyo bo'ylab (1080p)", "logo": "https://i.imgur.com/KArB5U6.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8"}, {"id": "FargonaMTRK.uz@SD", "name": "Farg'ona MTRK", "logo": "https://i.imgur.com/RYjQOfo.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1458/tracks-v1a1/mono.m3u8"}, {"id": "FTV.uz@SD", "name": "FTV (Uzbekistan) (576p)", "logo": "https://i.imgur.com/7lpISyN.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1018/playlist.m3u8"}, {"id": "FutbolTV.uz@HD", "name": "Futbol TV (1080p)", "logo": "https://i.ibb.co/h1gQSkbB/Futbol-TV.png", "category": "Sports", "stream_url": "http://stream3.cinerama.uz/1010/tracks-v1a1/mono.m3u8"}, {"id": "Kinoteatr.uz@SD", "name": "Kinoteatr (1080p)", "logo": "https://i.imgur.com/emH1BgC.png", "category": "Movies", "stream_url": "https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8"}, {"id": "Madaniyatvamarifat.uz@SD", "name": "Madaniyat va ma'rifat (576p)", "logo": "https://i.imgur.com/eeNLXCP.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8"}, {"id": "Mahalla.uz@SD", "name": "Mahalla (576p)", "logo": "https://i.imgur.com/GtABiJI.png", "category": "Undefined", "stream_url": "https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8"}, {"id": "MakonTV.uz@SD", "name": "Makon TV (576i)", "logo": "https://i.imgur.com/vCc0ED1.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1497/tracks-v1a1/mono.m3u8"}, {"id": "Milliy.uz@SD", "name": "Milliy (1080p)", "logo": "https://i.imgur.com/v4FBm26.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8"}, {"id": "MiMiTV.uz@SD", "name": "MiMi TV (720p)", "logo": "https://i.imgur.com/NmQglPa.png", "category": "Kids", "stream_url": "https://fl.biztv.media/MiMiTV_720/playlist.m3u8"}, {"id": "MuzTVUzbekistan.uz@SD", "name": "Muz TV Uzbekistan", "logo": "https://s8.vcdn.biz/static/f/6010782281/image.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1063/tracks-v1a1/mono.m3u8"}, {"id": "MY5.uz@SD", "name": "MY5 (576p)", "logo": "https://i.imgur.com/bjlzu5k.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8"}, {"id": "Navo.uz@SD", "name": "Navo (576p)", "logo": "https://i.imgur.com/7dZ64y9.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8"}, {"id": "NavoiyMTRK.uz@SD", "name": "Navoiy MTRK (576i)", "logo": "https://i.imgur.com/qa4VlYh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1460/tracks-v1a1/mono.m3u8"}, {"id": "NurafshonTV.uz@SD", "name": "Nurafshon TV", "logo": "https://i.imgur.com/MMdNyBU.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1220/tracks-v1a1/mono.m3u8"}, {"id": "Ozbekiston24.uz@SD", "name": "O'zbekiston 24 (1080p)", "logo": "https://i.imgur.com/VRFhKbw.png", "category": "News", "stream_url": "https://stream8.cinerama.uz/1011/tracks-v1a1/playlist.m3u8"}, {"id": "Ozbekiston.uz@SD", "name": "O'zbekiston (576p)", "logo": "https://i.imgur.com/QUIIhTD.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8"}, {"id": "OzbekistonTarixi.uz@SD", "name": "O'zbekiston Tarixi (1080p)", "logo": "https://i.imgur.com/iTTd3Ir.png", "category": "Documentary", "stream_url": "https://stream8.cinerama.uz/1209/tracks-v1a1/playlist.m3u8"}, {"id": "Qaraqalpaqstan.uz@SD", "name": "Qaraqalpaqstan (720p)", "logo": "https://i.imgur.com/G3qrUJh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1467/playlist.m3u8"}, {"id": "RenessansTV.uz@SD", "name": "Renessans TV (576p)", "logo": "https://i.imgur.com/cVlcqCX.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1221/tracks-v1a1/playlist.m3u8"}, {"id": "SevimliTV.uz@SD", "name": "Sevimli TV (1080p)", "logo": "https://i.imgur.com/iMwzRlr.png", "category": "Family", "stream_url": "https://stream8.cinerama.uz/1017/tracks-v1a1/playlist.m3u8"}, {"id": "Sport.uz@SD", "name": "Sport (Uzbekistan)", "logo": "https://i.imgur.com/2WJE9CM.png", "category": "Sports", "stream_url": "https://stream8.cinerama.uz/1004/tracks-v1a1/mono.m3u8"}, {"id": "TaraqqiyotTV.uz@SD", "name": "Taraqqiyot TV", "logo": "https://i.imgur.com/V3rtPEl.jpg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1204/tracks-v1a1/mono.m3u8"}, {"id": "Toshkent.uz@SD", "name": "Toshkent (576p)", "logo": "https://i.imgur.com/Z9R4nZg.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8"}, {"id": "UzReportTV.uz@SD", "name": "UzReport TV (1080p)", "logo": "https://i.imgur.com/Bch2RHc.jpg", "category": "News", "stream_url": "https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8"}, {"id": "Yoshlar.uz@SD", "name": "Yoshlar (1080p)", "logo": "https://i.imgur.com/s4xfUSx.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8"}, {"id": "ZorTV.uz@SD", "name": "Zo'r TV (576p)", "logo": "https://i.imgur.com/NuzyhVM.png", "category": "Entertainment;Music", "stream_url": "https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8"}];
+        const TV_CHANNELS = [{"id": "Aqlvoy.uz@SD", "name": "Aqlvoy", "logo": "https://i.imgur.com/ekF5cAi.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1205/tracks-v1a1/mono.m3u8", "epg_slug": "aqlvoy"}, {"id": "BIZCinema.uz@SD", "name": "BIZ Cinema (1080p)", "logo": "https://biztv.uz/static/media/biz-cinema.286b83dc.png", "category": "Movies", "stream_url": "https://fl.biztv.media/cinema_720_EMfSyXgoRdiIHgldXTZICucKTIeCKO/index.m3u8", "epg_slug": "biz-tv"}, {"id": "BIZMusic.uz@SD", "name": "BIZ Music (1080p)", "logo": "https://i.ibb.co/DfsCJwk/Uz-biz-music-5462.jpg", "category": "Music", "stream_url": "https://fl.biztv.media/music_720_QAKpGmVUjaPApCNjpsgBxrdqNihAkl/index.m3u8", "epg_slug": "biz-tv"}, {"id": "BIZTV.uz@SD", "name": "BIZ TV (1080p)", "logo": "https://biztv.uz/static/media/logo.5f993187.png", "category": "Entertainment", "stream_url": "https://fl.biztv.media/biz_tv_720_uni8jhub4h8fub4idejswh8dh3j94finbu4nidj39inwsj92in3d/index.m3u8", "epg_slug": "biz-tv"}, {"id": "Bolajon.uz@SD", "name": "Bolajon (576p)", "logo": "https://i.imgur.com/s7o0ifu.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1007/playlist.m3u8", "epg_slug": "bolajon"}, {"id": "CheksizTV.uz@SD", "name": "Cheksiz TV", "logo": "https://i.imgur.com/f7hHmmR.jpeg", "category": "Entertainment", "stream_url": "https://fl.biztv.media/cheksiz_tv_480_unif7hujidth7f4du83jrhuid3k94j8hfj8d93eubych8eju93n4ubt/tracks-v1a1/mono.m3u8", "epg_slug": "cheksiz-tv"}, {"id": "DasturxonTV.uz@SD", "name": "Dasturxon TV (576p)", "logo": "https://i.imgur.com/APM2ej5.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8", "epg_slug": "dasturxontv"}, {"id": "Dunyoboylab.uz@SD", "name": "Dunyo bo'ylab (1080p)", "logo": "https://i.imgur.com/KArB5U6.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8", "epg_slug": "dunyo-boylab"}, {"id": "FargonaMTRK.uz@SD", "name": "Farg'ona MTRK", "logo": "https://i.imgur.com/RYjQOfo.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1458/tracks-v1a1/mono.m3u8", "epg_slug": "fargona-mtrk"}, {"id": "FTV.uz@SD", "name": "FTV (Uzbekistan) (576p)", "logo": "https://i.imgur.com/7lpISyN.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1018/playlist.m3u8", "epg_slug": "ftvuz"}, {"id": "FutbolTV.uz@HD", "name": "Futbol TV (1080p)", "logo": "https://i.ibb.co/h1gQSkbB/Futbol-TV.png", "category": "Sports", "stream_url": "http://stream3.cinerama.uz/1010/tracks-v1a1/mono.m3u8", "epg_slug": "football-tv"}, {"id": "Kinoteatr.uz@SD", "name": "Kinoteatr (1080p)", "logo": "https://i.imgur.com/emH1BgC.png", "category": "Movies", "stream_url": "https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8", "epg_slug": "kinoteatr"}, {"id": "Madaniyatvamarifat.uz@SD", "name": "Madaniyat va ma'rifat (576p)", "logo": "https://i.imgur.com/eeNLXCP.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8", "epg_slug": "madaniyat-va-marifat"}, {"id": "Mahalla.uz@SD", "name": "Mahalla (576p)", "logo": "https://i.imgur.com/GtABiJI.png", "category": "Undefined", "stream_url": "https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8", "epg_slug": "mahalla"}, {"id": "MakonTV.uz@SD", "name": "Makon TV (576i)", "logo": "https://i.imgur.com/vCc0ED1.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1497/tracks-v1a1/mono.m3u8", "epg_slug": "agrotv"}, {"id": "Milliy.uz@SD", "name": "Milliy (1080p)", "logo": "https://i.imgur.com/v4FBm26.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8", "epg_slug": "milliy-tv"}, {"id": "MiMiTV.uz@SD", "name": "MiMi TV (720p)", "logo": "https://i.imgur.com/NmQglPa.png", "category": "Kids", "stream_url": "https://fl.biztv.media/MiMiTV_720/playlist.m3u8", "epg_slug": "mimi-tv-720p"}, {"id": "MuzTVUzbekistan.uz@SD", "name": "Muz TV Uzbekistan", "logo": "https://s8.vcdn.biz/static/f/6010782281/image.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1063/tracks-v1a1/mono.m3u8", "epg_slug": "muz-tv-uzbekistan"}, {"id": "MY5.uz@SD", "name": "MY5 (576p)", "logo": "https://i.imgur.com/bjlzu5k.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8", "epg_slug": "mening-yurtim"}, {"id": "Navo.uz@SD", "name": "Navo (576p)", "logo": "https://i.imgur.com/7dZ64y9.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8", "epg_slug": "navo"}, {"id": "NavoiyMTRK.uz@SD", "name": "Navoiy MTRK (576i)", "logo": "https://i.imgur.com/qa4VlYh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1460/tracks-v1a1/mono.m3u8", "epg_slug": "navo"}, {"id": "NurafshonTV.uz@SD", "name": "Nurafshon TV", "logo": "https://i.imgur.com/MMdNyBU.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1220/tracks-v1a1/mono.m3u8", "epg_slug": "nurafshontv"}, {"id": "Ozbekiston24.uz@SD", "name": "O'zbekiston 24 (1080p)", "logo": "https://i.imgur.com/VRFhKbw.png", "category": "News", "stream_url": "https://stream8.cinerama.uz/1011/tracks-v1a1/playlist.m3u8", "epg_slug": "uzbekistan-24"}, {"id": "Ozbekiston.uz@SD", "name": "O'zbekiston (576p)", "logo": "https://i.imgur.com/QUIIhTD.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8", "epg_slug": "uzbekistan"}, {"id": "OzbekistonTarixi.uz@SD", "name": "O'zbekiston Tarixi (1080p)", "logo": "https://i.imgur.com/iTTd3Ir.png", "category": "Documentary", "stream_url": "https://stream8.cinerama.uz/1209/tracks-v1a1/playlist.m3u8", "epg_slug": "uzbekistan"}, {"id": "Qaraqalpaqstan.uz@SD", "name": "Qaraqalpaqstan (720p)", "logo": "https://i.imgur.com/G3qrUJh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1467/playlist.m3u8", "epg_slug": "qaraqalpaqstan-720p"}, {"id": "RenessansTV.uz@SD", "name": "Renessans TV (576p)", "logo": "https://i.imgur.com/cVlcqCX.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1221/tracks-v1a1/playlist.m3u8", "epg_slug": "renessanstv"}, {"id": "SevimliTV.uz@SD", "name": "Sevimli TV (1080p)", "logo": "https://i.imgur.com/iMwzRlr.png", "category": "Family", "stream_url": "https://stream8.cinerama.uz/1017/tracks-v1a1/playlist.m3u8", "epg_slug": "sevimli-tv"}, {"id": "Sport.uz@SD", "name": "Sport (Uzbekistan)", "logo": "https://i.imgur.com/2WJE9CM.png", "category": "Sports", "stream_url": "https://stream8.cinerama.uz/1004/tracks-v1a1/mono.m3u8", "epg_slug": "sport-tv"}, {"id": "TaraqqiyotTV.uz@SD", "name": "Taraqqiyot TV", "logo": "https://i.imgur.com/V3rtPEl.jpg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1204/tracks-v1a1/mono.m3u8", "epg_slug": "taraqqiyot-tv"}, {"id": "Toshkent.uz@SD", "name": "Toshkent (576p)", "logo": "https://i.imgur.com/Z9R4nZg.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8", "epg_slug": "toshkent"}, {"id": "UzReportTV.uz@SD", "name": "UzReport TV (1080p)", "logo": "https://i.imgur.com/Bch2RHc.jpg", "category": "News", "stream_url": "https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8", "epg_slug": "uzreport-tv-1080p"}, {"id": "Yoshlar.uz@SD", "name": "Yoshlar (1080p)", "logo": "https://i.imgur.com/s4xfUSx.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8", "epg_slug": "yoshlar"}, {"id": "ZorTV.uz@SD", "name": "Zo'r TV (576p)", "logo": "https://i.imgur.com/NuzyhVM.png", "category": "Entertainment;Music", "stream_url": "https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8", "epg_slug": "zor-tv"}];
         let currentTvChannels = [...TV_CHANNELS];
         let currentPlayingChannel = TV_CHANNELS[0];
         let selectedTvCategory = 'all';
+        let tvSubTab = 'live'; // 'live' or 'epg'
+        let selectedEpgChannel = TV_CHANNELS[0];
+        let epgScheduleData = {};
+        let epgSearchQuery = '';
         let hlsInstance = null;
 
         function initTvChannels() {
@@ -3668,6 +3874,8 @@
                 .then(data => {
                     if (Array.isArray(data) && data.length > 0) {
                         currentTvChannels = data;
+                        if (!currentPlayingChannel) currentPlayingChannel = data[0];
+                        if (!selectedEpgChannel) selectedEpgChannel = data[0];
                         if (currentTab === 'tv') renderTvSection();
                     }
                 })
@@ -3675,15 +3883,81 @@
         }
         initTvChannels();
 
+        function switchTvSubTab(sub) {
+            tvSubTab = sub;
+            renderTvSection();
+        }
+
         function switchTvCategory(cat) {
             selectedTvCategory = cat;
             renderTvSection();
+        }
+
+        function selectEpgChannel(chId) {
+            const ch = currentTvChannels.find(c => c.id === chId);
+            if (ch) {
+                selectedEpgChannel = ch;
+                fetchEpgForChannel(ch);
+            }
+        }
+
+        function handleEpgSearch(val) {
+            epgSearchQuery = val.trim().toLowerCase();
+            renderEpgList();
+        }
+
+        function fetchEpgForChannel(ch) {
+            const slug = ch.epg_slug || ch.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (epgScheduleData[slug]) {
+                renderEpgList();
+                updateNowPlayingBar();
+                return;
+            }
+
+            fetch(`/api/epg?slug=${encodeURIComponent(slug)}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        epgScheduleData[slug] = data;
+                        renderEpgList();
+                        updateNowPlayingBar();
+                    }
+                })
+                .catch(e => {
+                    console.log('EPG fetch error:', e);
+                });
+        }
+
+        function updateNowPlayingBar() {
+            const ch = currentPlayingChannel;
+            if (!ch) return;
+            const slug = ch.epg_slug || ch.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const progs = epgScheduleData[slug] || [];
+            
+            const liveProg = progs.find(p => p.status === 'live') || progs[0];
+            const liveIdx = progs.findIndex(p => p.status === 'live');
+            const nextProg = liveIdx !== -1 && liveIdx + 1 < progs.length ? progs[liveIdx + 1] : null;
+
+            const nowTitleEl = document.getElementById('epgNowTitle');
+            const nowFillEl = document.getElementById('epgNowFill');
+            const nextTextEl = document.getElementById('epgNextText');
+
+            if (nowTitleEl && liveProg) {
+                nowTitleEl.textContent = `${liveProg.time} • ${liveProg.name}`;
+            }
+            if (nowFillEl && liveProg) {
+                nowFillEl.style.width = (liveProg.progress || 50) + '%';
+            }
+            if (nextTextEl) {
+                nextTextEl.textContent = nextProg ? `Keyingi: ${nextProg.time} • ${nextProg.name}` : 'Kunlik ko\'rsatuvlar davom etmoqda';
+            }
         }
 
         function playTvStream(channelId) {
             const ch = currentTvChannels.find(c => c.id === channelId) || currentTvChannels[0];
             if (!ch) return;
             currentPlayingChannel = ch;
+            selectedEpgChannel = ch;
 
             const video = document.getElementById('tvLivePlayer');
             const logoEl = document.getElementById('tvCurrentLogo');
@@ -3697,6 +3971,8 @@
             document.querySelectorAll('.tv-card').forEach(card => {
                 card.classList.toggle('active-playing', card.getAttribute('data-id') === ch.id);
             });
+
+            fetchEpgForChannel(ch);
 
             if (!video) return;
 
@@ -3741,11 +4017,76 @@
             }
         }
 
+        function renderEpgList() {
+            const container = document.getElementById('epgTimelineContainer');
+            if (!container) return;
+
+            const ch = selectedEpgChannel || currentPlayingChannel || currentTvChannels[0];
+            const slug = ch.epg_slug || ch.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const progs = epgScheduleData[slug] || [];
+
+            if (progs.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center;padding:24px;color:#94a3b8;">
+                        <i data-lucide="loader-2" style="width:28px;height:28px;animation:spin 1s linear infinite;margin-bottom:8px;"></i>
+                        <p style="margin:0;font-size:13px;">${ch.name} kunlik dasturi yuklanmoqda...</p>
+                    </div>
+                `;
+                refreshIcons();
+                fetchEpgForChannel(ch);
+                return;
+            }
+
+            const filtered = epgSearchQuery
+                ? progs.filter(p => p.name.toLowerCase().includes(epgSearchQuery) || p.time.includes(epgSearchQuery))
+                : progs;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center;padding:20px;color:#94a3b8;">
+                        <p style="margin:0;font-size:13px;">"${epgSearchQuery}" bo\'yicha ko\'rsatuv topilmadi.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(p => {
+                const isLive = p.status === 'live';
+                const isPast = p.status === 'past';
+                const tagClass = isLive ? 'live' : (isPast ? 'past' : 'future');
+                const tagText = isLive ? '<span class="tv-live-dot"></span> JONLI EFIRDA' : (isPast ? 'O\'tgan' : 'Kutilmoqda');
+
+                return `
+                    <div class="epg-item ${isLive ? 'is-live' : (isPast ? 'is-past' : '')}">
+                        <div class="epg-item-left">
+                            <span class="epg-time-badge">${p.time}</span>
+                            <div>
+                                <h5 class="epg-item-name">${p.name}</h5>
+                                <div class="epg-item-cat">${p.category || 'Dastur'}</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;">
+                            <span class="epg-status-tag ${tagClass}">${tagText}</span>
+                            ${isLive ? `
+                                <button onclick="playTvStream('${ch.id}')" style="background:rgba(56,189,248,0.2);border:1px solid #38bdf8;color:#38bdf8;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:3px;">
+                                    <i data-lucide="play" style="width:11px;height:11px;"></i> Ko\'rish
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            refreshIcons();
+        }
+
         function renderTvSection() {
             const container = document.getElementById('appContent');
             if (!container) return;
 
             const curCh = currentPlayingChannel || currentTvChannels[0] || {};
+            const epgCh = selectedEpgChannel || curCh;
+
             const cats = ['all', 'General', 'Movies', 'Kids', 'Sports', 'Music', 'Entertainment', 'News'];
             const catNames = {
                 'all': 'Barchasi',
@@ -3758,11 +4099,12 @@
                 'News': 'Yangiliklar'
             };
 
-            const filtered = selectedTvCategory === 'all'
+            const filteredChannels = selectedTvCategory === 'all'
                 ? currentTvChannels
                 : currentTvChannels.filter(c => c.category && c.category.toLowerCase().includes(selectedTvCategory.toLowerCase()));
 
             let html = `
+                <!-- 1. LIVE VIDEO PLAYER -->
                 <div class="tv-player-card">
                     <div class="tv-video-wrapper">
                         <video id="tvLivePlayer" class="tv-video-element" controls playsinline autoplay></video>
@@ -3785,40 +4127,102 @@
                     </div>
                 </div>
 
-                <div class="section-heading" style="margin-bottom:10px;">
-                    <h3><i data-lucide="tv"></i> O'zbekiston Telekanallari</h3>
-                    <span class="count-pill">${filtered.length} ta kanal</span>
+                <!-- 2. NOW PLAYING EPG MINI CARD -->
+                <div class="epg-now-card">
+                    <div class="epg-now-header">
+                        <span class="epg-now-title"><i data-lucide="radio" style="width:15px;height:15px;color:#38bdf8;"></i> Hozir Efirda:</span>
+                        <span id="epgNowTitle" style="font-size:12.5px;color:#38bdf8;font-weight:700;">Yuklanmoqda...</span>
+                    </div>
+                    <div class="epg-progress-bar-bg">
+                        <div id="epgNowFill" class="epg-progress-bar-fill" style="width: 45%;"></div>
+                    </div>
+                    <div id="epgNextText" class="epg-next-text">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i> Keyingi namoyish kutilmoqda...
+                    </div>
                 </div>
 
-                <div class="category-pills" style="margin-bottom:14px;">
-                    ${cats.map(c => `
-                        <button class="cat-pill ${selectedTvCategory === c ? 'active' : ''}" onclick="switchTvCategory('${c}')">
-                            ${catNames[c] || c}
-                        </button>
-                    `).join('')}
-                </div>
-
-                <div class="tv-channels-grid">
-                    ${filtered.map(ch => {
-                        const isPlaying = curCh.id === ch.id;
-                        return `
-                            <div class="tv-card ${isPlaying ? 'active-playing' : ''}" data-id="${ch.id}" onclick="playTvStream('${ch.id}')">
-                                ${isPlaying ? '<span class="tv-playing-indicator"><i data-lucide="volume-2" style="width:14px;height:14px;"></i></span>' : ''}
-                                <img class="tv-card-logo" src="${ch.logo}" alt="${ch.name}" onerror="this.src='https://via.placeholder.com/100?text=TV'">
-                                <h5 class="tv-card-name">${ch.name}</h5>
-                                <span class="tv-card-cat">${ch.category || 'Jonli'}</span>
-                            </div>
-                        `;
-                    }).join('')}
+                <!-- 3. SUB-TAB SWITCHER: LIVE CHANNELS vs TELEDASTUR (00:00 - 23:59) -->
+                <div class="epg-segmented-control">
+                    <button class="epg-segment-btn ${tvSubTab === 'live' ? 'active' : ''}" onclick="switchTvSubTab('live')">
+                        <i data-lucide="tv" style="width:15px;height:15px;"></i> Jonli Kanallar (${currentTvChannels.length})
+                    </button>
+                    <button class="epg-segment-btn ${tvSubTab === 'epg' ? 'active' : ''}" onclick="switchTvSubTab('epg')">
+                        <i data-lucide="calendar" style="width:15px;height:15px;"></i> Kunlik Dastur (00:00 - 23:59)
+                    </button>
                 </div>
             `;
+
+            if (tvSubTab === 'live') {
+                // VIEW 1: LIVE CHANNELS GRID
+                html += `
+                    <div class="category-pills" style="margin-bottom:14px;">
+                        ${cats.map(c => `
+                            <button class="cat-pill ${selectedTvCategory === c ? 'active' : ''}" onclick="switchTvCategory('${c}')">
+                                ${catNames[c] || c}
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div class="tv-channels-grid">
+                        ${filteredChannels.map(ch => {
+                            const isPlaying = curCh.id === ch.id;
+                            return `
+                                <div class="tv-card ${isPlaying ? 'active-playing' : ''}" data-id="${ch.id}" onclick="playTvStream('${ch.id}')">
+                                    ${isPlaying ? '<span class="tv-playing-indicator"><i data-lucide="volume-2" style="width:14px;height:14px;"></i></span>' : ''}
+                                    <img class="tv-card-logo" src="${ch.logo}" alt="${ch.name}" onerror="this.src='https://via.placeholder.com/100?text=TV'">
+                                    <h5 class="tv-card-name">${ch.name}</h5>
+                                    <div style="display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:4px;">
+                                        <span class="tv-card-cat">${ch.category || 'Jonli'}</span>
+                                        <button onclick="event.stopPropagation(); selectedEpgChannel = currentTvChannels.find(c => c.id === '${ch.id}'); switchTvSubTab('epg');" style="background:rgba(56,189,248,0.15);border:none;color:#38bdf8;padding:2px 6px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:2px;">
+                                            <i data-lucide="calendar" style="width:10px;height:10px;"></i> Dastur
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            } else {
+                // VIEW 2: FULL 24-HOUR TELEDASTUR (EPG 00:00 - 23:59)
+                html += `
+                    <div class="section-heading" style="margin-bottom:8px;">
+                        <h3><i data-lucide="calendar"></i> ${epgCh.name} — Bugungi Dastur</h3>
+                        <span class="count-pill">00:00 – 23:59</span>
+                    </div>
+
+                    <!-- Horizontal Channel Selector for EPG -->
+                    <div class="epg-channels-slider">
+                        ${currentTvChannels.map(ch => `
+                            <button class="epg-ch-pill ${epgCh.id === ch.id ? 'active' : ''}" onclick="selectEpgChannel('${ch.id}')">
+                                <img src="${ch.logo}" alt="${ch.name}" onerror="this.src='https://via.placeholder.com/100?text=TV'">
+                                ${ch.name}
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <!-- Search within EPG schedule -->
+                    <div class="search-input-wrapper" style="margin-bottom:12px;">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Ko'rsatuv, film yoki vaqtni izlang (masalan: 19:00, serial)..." oninput="handleEpgSearch(this.value)">
+                    </div>
+
+                    <!-- Timeline List Container -->
+                    <div class="epg-timeline-list" id="epgTimelineContainer"></div>
+                `;
+            }
 
             container.innerHTML = html;
             refreshIcons();
 
+            if (tvSubTab === 'epg') {
+                renderEpgList();
+            }
+
             setTimeout(() => {
-                if (curCh.stream_url) {
+                if (curCh.stream_url && !hlsInstance) {
                     playTvStream(curCh.id);
+                } else {
+                    updateNowPlayingBar();
                 }
             }, 100);
         }
