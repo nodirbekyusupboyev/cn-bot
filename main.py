@@ -572,7 +572,7 @@ def build_webapp_url(lang: str, bot_username: str = "", tab: str = "", cat: str 
     u = ensure_user(user_id, lang) if user_id else {"balance": 0, "is_premium": False, "views_count": 0}
     params = {
         "lang": lang,
-        "v": "20261027_8",
+        "v": "20261028_live_tv_v4",
         "ucount": stats["u_count"],
         "mcount": stats["m_count"],
         "ccount": stats["c_count"],
