@@ -706,11 +706,21 @@ def stop_previous_bot_instances():
             )
         except Exception:
             pass
+    else:
+        try:
+            import signal
+            res = subprocess.run(["pgrep", "-f", "main.py"], capture_output=True, text=True, timeout=5)
+            if res.returncode == 0:
+                for line in res.stdout.strip().splitlines():
+                    p = line.strip()
+                    if p.isdigit() and int(p) != current_pid:
+                        try:
+                            os.kill(int(p), signal.SIGTERM)
+                        except Exception:
+                            pass
+        except Exception:
+            pass
 
-
-# ==========================================
-# 24/7 VEB-SERVER VA ANTI-SLEEP (RENDER / CLOUD UCHUN)
-# ==========================================
 def _find_index_html() -> str:
     for candidate in ("index.html", os.path.join("index html", "index.html")):
         if os.path.exists(candidate):
@@ -1435,7 +1445,15 @@ async def main():
         else:
             await call.answer(t["video_missing"], show_alert=True)
 
-    await dp.start_polling(bot)
+    try:
+        await dp.start_polling(
+            bot,
+            allowed_updates=["message", "callback_query"],
+            drop_pending_updates=True,
+            handle_signals=True
+        )
+    finally:
+        await bot.session.close()
 
 
 if __name__ == '__main__':
