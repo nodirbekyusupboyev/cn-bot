@@ -690,36 +690,7 @@ class AddContent(StatesGroup):
 # ESKI DUBLIKAT BOT JARAYONLARINI AVTOMATIK TO'XTATISH
 # ==========================================
 def stop_previous_bot_instances():
-    current_pid = os.getpid()
-    if os.name == 'nt':
-        try:
-            ps_cmd = (
-                f"Get-CimInstance Win32_Process -Filter \"Name LIKE 'python%'\" | "
-                f"Where-Object {{ $_.ProcessId -ne {current_pid} -and $_.CommandLine -match 'main\\.py' }} | "
-                f"ForEach-Object {{ Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }}"
-            )
-            subprocess.run(
-                ["powershell", "-NoProfile", "-Command", ps_cmd],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=6
-            )
-        except Exception:
-            pass
-    else:
-        try:
-            import signal
-            res = subprocess.run(["pgrep", "-f", "main.py"], capture_output=True, text=True, timeout=5)
-            if res.returncode == 0:
-                for line in res.stdout.strip().splitlines():
-                    p = line.strip()
-                    if p.isdigit() and int(p) != current_pid:
-                        try:
-                            os.kill(int(p), signal.SIGTERM)
-                        except Exception:
-                            pass
-        except Exception:
-            pass
+    pass
 
 def _find_index_html() -> str:
     for candidate in ("index.html", os.path.join("index html", "index.html")):
