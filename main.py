@@ -605,9 +605,11 @@ def language_keyboard() -> types.InlineKeyboardMarkup:
 def main_menu_keyboard(lang: str, bot_username: str = "", user_id: int = 0) -> types.InlineKeyboardMarkup:
     t = TEXTS[lang]
     app_url = build_webapp_url(lang, bot_username, user_id=user_id)
+    tv_app_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
     profile_app_url = build_webapp_url(lang, bot_username, tab="profile", user_id=user_id)
     rows = [
         [types.InlineKeyboardButton(text=t["btn_webapp"], web_app=types.WebAppInfo(url=app_url))],
+        [types.InlineKeyboardButton(text="📺 Jonli TV (34+ Telekanal Efiri)", web_app=types.WebAppInfo(url=tv_app_url))],
         [
             types.InlineKeyboardButton(text=t["btn_movies"], callback_data="menu_movies"),
             types.InlineKeyboardButton(text=t["btn_cartoons"], callback_data="menu_cartoons"),
@@ -630,12 +632,17 @@ def main_menu_keyboard(lang: str, bot_username: str = "", user_id: int = 0) -> t
 def main_reply_keyboard(lang: str, bot_username: str = "", user_id: int = 0) -> types.ReplyKeyboardMarkup:
     t = TEXTS[lang]
     app_url = build_webapp_url(lang, bot_username, user_id=user_id)
+    tv_app_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
     return types.ReplyKeyboardMarkup(
         keyboard=[
             [types.KeyboardButton(text=t["btn_webapp"], web_app=types.WebAppInfo(url=app_url))],
-            [types.KeyboardButton(text=t["btn_movies"]), types.KeyboardButton(text=t["btn_cartoons"])],
-            [types.KeyboardButton(text=t["btn_profile"]), types.KeyboardButton(text=t["btn_premium"])],
-            [types.KeyboardButton(text=t["btn_search_code"]), types.KeyboardButton(text=t["btn_change_lang"])],
+            [
+                types.KeyboardButton(text="📺 Jonli TV (IPTV)", web_app=types.WebAppInfo(url=tv_app_url)),
+                types.KeyboardButton(text=t["btn_movies"]),
+            ],
+            [types.KeyboardButton(text=t["btn_cartoons"]), types.KeyboardButton(text=t["btn_profile"])],
+            [types.KeyboardButton(text=t["btn_premium"]), types.KeyboardButton(text=t["btn_search_code"])],
+            [types.KeyboardButton(text=t["btn_change_lang"])],
         ],
         resize_keyboard=True
     )
@@ -749,6 +756,23 @@ async def handle_lucide_js(request: web.Request) -> web.Response:
     return web.Response(status=404)
 
 
+
+async def handle_api_channels(request: web.Request) -> web.Response:
+    channels = []
+    if os.path.exists("channels.json"):
+        try:
+            with open("channels.json", "r", encoding="utf-8") as f:
+                channels = json.load(f)
+        except Exception:
+            pass
+    return web.json_response(
+        channels,
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, max-age=1800"
+        }
+    )
+
 async def handle_health(request: web.Request) -> web.Response:
     return web.json_response({"ok": True, "status": "24/7 ACTIVE"})
 
@@ -774,6 +798,7 @@ async def start_24_7_web_server() -> int:
     app.router.add_get("/index.html", handle_web_index)
     app.router.add_get("/lucide.min.js", handle_lucide_js)
     app.router.add_get("/api/stats", handle_api_stats)
+    app.router.add_get("/api/channels", handle_api_channels)
     app.router.add_get("/health", handle_health)
 
     runner = web.AppRunner(app)
@@ -955,6 +980,45 @@ async def main():
     # ------------------------------------------
     # ASOSIY MENYU, PROFIL, PREMIUM VA KATEGORIYALAR
     # ------------------------------------------
+
+    @dp.message(Command("tv"))
+    async def tv_command_handler(message: types.Message):
+        user_id = message.from_user.id
+        lang = get_lang(user_id)
+        t = TEXTS[lang]
+        tv_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
+        markup = types.InlineKeyboardMarkup(inline_keyboard=[
+            [types.InlineKeyboardButton(text="📺 Jonli TV'ni Ochish (34+ Kanal)", web_app=types.WebAppInfo(url=tv_url))],
+            [types.InlineKeyboardButton(text=t["btn_back"], callback_data="back_main")]
+        ])
+        await message.answer(
+            "📺 <b>JONLI ONLAYN TELEVIDENIYE (IPTV)</b>\n\n"
+            "🔴 <b>34+ O'zbekiston telekanallari</b> (Sevimli, Zo'r TV, Milliy, Futbol TV, Sport, Kinoteatr, Bolajon, Aqlvoy va boshqalar) "
+            "to'g'ridan-to'g'ri Mini App ichida jonli efirda!\n\n"
+            "✨ Quyidagi tugmani bosing va kanallarni bepul tomosha qiling:",
+            reply_markup=markup,
+            parse_mode="HTML"
+        )
+
+    @dp.callback_query(F.data == "menu_tv")
+    async def tv_callback_handler(call: types.CallbackQuery):
+        user_id = call.from_user.id
+        lang = get_lang(user_id)
+        t = TEXTS[lang]
+        tv_url = build_webapp_url(lang, bot_username, tab="tv", user_id=user_id)
+        markup = types.InlineKeyboardMarkup(inline_keyboard=[
+            [types.InlineKeyboardButton(text="📺 Jonli TV'ni Ochish (34+ Kanal)", web_app=types.WebAppInfo(url=tv_url))],
+            [types.InlineKeyboardButton(text=t["btn_back"], callback_data="back_main")]
+        ])
+        await call.message.edit_text(
+            "📺 <b>JONLI ONLAYN TELEVIDENIYE (IPTV)</b>\n\n"
+            "🔴 <b>34+ O'zbekiston telekanallari</b> bepul jonli efirda!\n\n"
+            "✨ Tomosha qilish uchun quyidagi tugmani bosing:",
+            reply_markup=markup,
+            parse_mode="HTML"
+        )
+        await call.answer()
+
     @dp.callback_query(F.data == "back_main")
     async def back_to_main(call: types.CallbackQuery):
         user_id = call.from_user.id

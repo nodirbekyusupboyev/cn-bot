@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MOVITIMECN • Cinema & Cartoon World</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1684,6 +1685,168 @@
             color: var(--text-secondary);
             font-weight: 700;
         }
+    
+        /* =========================================================
+           TV & IPTV LIVE STREAMING PLAYER STYLES
+           ========================================================= */
+        .tv-player-card {
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.25);
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .tv-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tv-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+        .tv-player-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .tv-live-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.92);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 999px;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+            letter-spacing: 0.5px;
+        }
+        .tv-live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ffffff;
+            animation: pulse-dot 1.2s infinite ease-in-out;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+        .tv-current-info {
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(17, 24, 39, 0.85);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .tv-current-channel {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .tv-current-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 2px;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+        .tv-current-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0;
+        }
+        .tv-current-cat {
+            font-size: 11px;
+            color: #38bdf8;
+            margin: 2px 0 0 0;
+        }
+        .tv-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .tv-card {
+            background: rgba(23, 33, 53, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 12px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            position: relative;
+        }
+        .tv-card:active {
+            transform: scale(0.96);
+        }
+        .tv-card.active-playing {
+            border-color: #38bdf8;
+            background: rgba(14, 165, 233, 0.15);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+        }
+        .tv-card-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 4px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .tv-card-name {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #f8fafc;
+            line-height: 1.25;
+            margin: 0 0 4px 0;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .tv-card-cat {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        .tv-playing-indicator {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
     </style>
     <script src="lucide.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -1788,6 +1951,10 @@
             <span class="nav-icon"><i data-lucide="home"></i></span>
             <span id="navLabel_home">Asosiy</span>
         </button>
+        <button class="nav-item" id="nav_tv" onclick="switchTab('tv')">
+            <span class="nav-icon"><i data-lucide="tv"></i></span>
+            <span id="navLabel_tv">Jonli TV</span>
+        </button>
         <button class="nav-item" id="nav_movies" onclick="switchTab('movies')">
             <span class="nav-icon"><i data-lucide="film"></i></span>
             <span id="navLabel_movies">Kinolar</span>
@@ -1795,10 +1962,6 @@
         <button class="nav-item" id="nav_cartoons" onclick="switchTab('cartoons')">
             <span class="nav-icon"><i data-lucide="smile"></i></span>
             <span id="navLabel_cartoons">Multfilmlar</span>
-        </button>
-        <button class="nav-item" id="nav_menu" onclick="toggleMenuDrawer(true)">
-            <span class="nav-icon"><i data-lucide="layout-grid"></i></span>
-            <span id="navLabel_menu">Menyu</span>
         </button>
         <button class="nav-item" id="nav_saved" onclick="switchTab('saved')">
             <span class="nav-icon"><i data-lucide="user"></i></span>
@@ -2751,7 +2914,7 @@
             currentCategory = cat;
             document.getElementById('searchInput').value = '';
 
-            ['home', 'movies', 'cartoons', 'saved'].forEach(id => {
+            ['home', 'tv', 'movies', 'cartoons', 'saved'].forEach(id => {
                 const navEl = document.getElementById('nav_' + id);
                 if (navEl) navEl.classList.toggle('active', id === tab);
             });
@@ -2816,6 +2979,10 @@
                 return;
             }
 
+            if (currentTab === 'tv') {
+                renderTvSection();
+                return;
+            }
             if (currentTab === 'saved' || currentTab === 'profile') {
                 const savedItems = CATALOG.filter(i => savedCodes.includes(i.code));
                 const activeOnline = Math.max(12, Math.round(liveUsersCount * 0.28));
@@ -3485,6 +3652,177 @@
 
         window.addEventListener('DOMContentLoaded', refreshIcons);
         window.addEventListener('load', refreshIcons);
+    
+        // ==========================================
+        // IPTV LIVE STREAMING DATA & CONTROLLER
+        // ==========================================
+        const TV_CHANNELS = [{"id": "Aqlvoy.uz@SD", "name": "Aqlvoy", "logo": "https://i.imgur.com/ekF5cAi.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1205/tracks-v1a1/mono.m3u8"}, {"id": "BIZCinema.uz@SD", "name": "BIZ Cinema (1080p)", "logo": "https://biztv.uz/static/media/biz-cinema.286b83dc.png", "category": "Movies", "stream_url": "https://fl.biztv.media/cinema_720_EMfSyXgoRdiIHgldXTZICucKTIeCKO/index.m3u8"}, {"id": "BIZMusic.uz@SD", "name": "BIZ Music (1080p)", "logo": "https://i.ibb.co/DfsCJwk/Uz-biz-music-5462.jpg", "category": "Music", "stream_url": "https://fl.biztv.media/music_720_QAKpGmVUjaPApCNjpsgBxrdqNihAkl/index.m3u8"}, {"id": "BIZTV.uz@SD", "name": "BIZ TV (1080p)", "logo": "https://biztv.uz/static/media/logo.5f993187.png", "category": "Entertainment", "stream_url": "https://fl.biztv.media/biz_tv_720_uni8jhub4h8fub4idejswh8dh3j94finbu4nidj39inwsj92in3d/index.m3u8"}, {"id": "Bolajon.uz@SD", "name": "Bolajon (576p)", "logo": "https://i.imgur.com/s7o0ifu.png", "category": "Kids", "stream_url": "https://stream8.cinerama.uz/1007/playlist.m3u8"}, {"id": "CheksizTV.uz@SD", "name": "Cheksiz TV", "logo": "https://i.imgur.com/f7hHmmR.jpeg", "category": "Entertainment", "stream_url": "https://fl.biztv.media/cheksiz_tv_480_unif7hujidth7f4du83jrhuid3k94j8hfj8d93eubych8eju93n4ubt/tracks-v1a1/mono.m3u8"}, {"id": "DasturxonTV.uz@SD", "name": "Dasturxon TV (576p)", "logo": "https://i.imgur.com/APM2ej5.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8"}, {"id": "Dunyoboylab.uz@SD", "name": "Dunyo bo'ylab (1080p)", "logo": "https://i.imgur.com/KArB5U6.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8"}, {"id": "FargonaMTRK.uz@SD", "name": "Farg'ona MTRK", "logo": "https://i.imgur.com/RYjQOfo.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1458/tracks-v1a1/mono.m3u8"}, {"id": "FTV.uz@SD", "name": "FTV (Uzbekistan) (576p)", "logo": "https://i.imgur.com/7lpISyN.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1018/playlist.m3u8"}, {"id": "FutbolTV.uz@HD", "name": "Futbol TV (1080p)", "logo": "https://i.ibb.co/h1gQSkbB/Futbol-TV.png", "category": "Sports", "stream_url": "http://stream3.cinerama.uz/1010/tracks-v1a1/mono.m3u8"}, {"id": "Kinoteatr.uz@SD", "name": "Kinoteatr (1080p)", "logo": "https://i.imgur.com/emH1BgC.png", "category": "Movies", "stream_url": "https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8"}, {"id": "Madaniyatvamarifat.uz@SD", "name": "Madaniyat va ma'rifat (576p)", "logo": "https://i.imgur.com/eeNLXCP.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8"}, {"id": "Mahalla.uz@SD", "name": "Mahalla (576p)", "logo": "https://i.imgur.com/GtABiJI.png", "category": "Undefined", "stream_url": "https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8"}, {"id": "MakonTV.uz@SD", "name": "Makon TV (576i)", "logo": "https://i.imgur.com/vCc0ED1.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1497/tracks-v1a1/mono.m3u8"}, {"id": "Milliy.uz@SD", "name": "Milliy (1080p)", "logo": "https://i.imgur.com/v4FBm26.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8"}, {"id": "MiMiTV.uz@SD", "name": "MiMi TV (720p)", "logo": "https://i.imgur.com/NmQglPa.png", "category": "Kids", "stream_url": "https://fl.biztv.media/MiMiTV_720/playlist.m3u8"}, {"id": "MuzTVUzbekistan.uz@SD", "name": "Muz TV Uzbekistan", "logo": "https://s8.vcdn.biz/static/f/6010782281/image.jpg", "category": "Music", "stream_url": "https://stream8.cinerama.uz/1063/tracks-v1a1/mono.m3u8"}, {"id": "MY5.uz@SD", "name": "MY5 (576p)", "logo": "https://i.imgur.com/bjlzu5k.png", "category": "Entertainment", "stream_url": "https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8"}, {"id": "Navo.uz@SD", "name": "Navo (576p)", "logo": "https://i.imgur.com/7dZ64y9.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8"}, {"id": "NavoiyMTRK.uz@SD", "name": "Navoiy MTRK (576i)", "logo": "https://i.imgur.com/qa4VlYh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1460/tracks-v1a1/mono.m3u8"}, {"id": "NurafshonTV.uz@SD", "name": "Nurafshon TV", "logo": "https://i.imgur.com/MMdNyBU.jpeg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1220/tracks-v1a1/mono.m3u8"}, {"id": "Ozbekiston24.uz@SD", "name": "O'zbekiston 24 (1080p)", "logo": "https://i.imgur.com/VRFhKbw.png", "category": "News", "stream_url": "https://stream8.cinerama.uz/1011/tracks-v1a1/playlist.m3u8"}, {"id": "Ozbekiston.uz@SD", "name": "O'zbekiston (576p)", "logo": "https://i.imgur.com/QUIIhTD.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8"}, {"id": "OzbekistonTarixi.uz@SD", "name": "O'zbekiston Tarixi (1080p)", "logo": "https://i.imgur.com/iTTd3Ir.png", "category": "Documentary", "stream_url": "https://stream8.cinerama.uz/1209/tracks-v1a1/playlist.m3u8"}, {"id": "Qaraqalpaqstan.uz@SD", "name": "Qaraqalpaqstan (720p)", "logo": "https://i.imgur.com/G3qrUJh.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1467/playlist.m3u8"}, {"id": "RenessansTV.uz@SD", "name": "Renessans TV (576p)", "logo": "https://i.imgur.com/cVlcqCX.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1221/tracks-v1a1/playlist.m3u8"}, {"id": "SevimliTV.uz@SD", "name": "Sevimli TV (1080p)", "logo": "https://i.imgur.com/iMwzRlr.png", "category": "Family", "stream_url": "https://stream8.cinerama.uz/1017/tracks-v1a1/playlist.m3u8"}, {"id": "Sport.uz@SD", "name": "Sport (Uzbekistan)", "logo": "https://i.imgur.com/2WJE9CM.png", "category": "Sports", "stream_url": "https://stream8.cinerama.uz/1004/tracks-v1a1/mono.m3u8"}, {"id": "TaraqqiyotTV.uz@SD", "name": "Taraqqiyot TV", "logo": "https://i.imgur.com/V3rtPEl.jpg", "category": "General", "stream_url": "https://stream8.cinerama.uz/1204/tracks-v1a1/mono.m3u8"}, {"id": "Toshkent.uz@SD", "name": "Toshkent (576p)", "logo": "https://i.imgur.com/Z9R4nZg.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8"}, {"id": "UzReportTV.uz@SD", "name": "UzReport TV (1080p)", "logo": "https://i.imgur.com/Bch2RHc.jpg", "category": "News", "stream_url": "https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8"}, {"id": "Yoshlar.uz@SD", "name": "Yoshlar (1080p)", "logo": "https://i.imgur.com/s4xfUSx.png", "category": "General", "stream_url": "https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8"}, {"id": "ZorTV.uz@SD", "name": "Zo'r TV (576p)", "logo": "https://i.imgur.com/NuzyhVM.png", "category": "Entertainment;Music", "stream_url": "https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8"}];
+        let currentTvChannels = [...TV_CHANNELS];
+        let currentPlayingChannel = TV_CHANNELS[0];
+        let selectedTvCategory = 'all';
+        let hlsInstance = null;
+
+        function initTvChannels() {
+            fetch('/api/channels')
+                .then(r => r.json())
+                .then(data => {
+                    if (Array.isArray(data) && data.length > 0) {
+                        currentTvChannels = data;
+                        if (currentTab === 'tv') renderTvSection();
+                    }
+                })
+                .catch(e => console.log('Using default channels:', e));
+        }
+        initTvChannels();
+
+        function switchTvCategory(cat) {
+            selectedTvCategory = cat;
+            renderTvSection();
+        }
+
+        function playTvStream(channelId) {
+            const ch = currentTvChannels.find(c => c.id === channelId) || currentTvChannels[0];
+            if (!ch) return;
+            currentPlayingChannel = ch;
+
+            const video = document.getElementById('tvLivePlayer');
+            const logoEl = document.getElementById('tvCurrentLogo');
+            const nameEl = document.getElementById('tvCurrentName');
+            const catEl = document.getElementById('tvCurrentCat');
+
+            if (logoEl) logoEl.src = ch.logo;
+            if (nameEl) nameEl.textContent = ch.name;
+            if (catEl) catEl.textContent = ch.category + ' • JONLI EFIR';
+
+            document.querySelectorAll('.tv-card').forEach(card => {
+                card.classList.toggle('active-playing', card.getAttribute('data-id') === ch.id);
+            });
+
+            if (!video) return;
+
+            if (Hls.isSupported()) {
+                if (hlsInstance) {
+                    hlsInstance.destroy();
+                }
+                hlsInstance = new Hls({
+                    enableWorker: true,
+                    lowLatencyMode: true
+                });
+                hlsInstance.loadSource(ch.stream_url);
+                hlsInstance.attachMedia(video);
+                hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play().catch(e => console.log('Autoplay:', e));
+                });
+                hlsInstance.on(Hls.Events.ERROR, function(event, data) {
+                    if (data.fatal) {
+                        switch(data.type) {
+                            case Hls.ErrorTypes.NETWORK_ERROR:
+                                hlsInstance.startLoad();
+                                break;
+                            case Hls.ErrorTypes.MEDIA_ERROR:
+                                hlsInstance.recoverMediaError();
+                                break;
+                            default:
+                                hlsInstance.destroy();
+                                break;
+                        }
+                    }
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = ch.stream_url;
+                video.addEventListener('loadedmetadata', function () {
+                    video.play().catch(e => console.log('Autoplay:', e));
+                });
+            }
+
+            const playerCard = document.querySelector('.tv-player-card');
+            if (playerCard) {
+                playerCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function renderTvSection() {
+            const container = document.getElementById('appContent');
+            if (!container) return;
+
+            const curCh = currentPlayingChannel || currentTvChannels[0] || {};
+            const cats = ['all', 'General', 'Movies', 'Kids', 'Sports', 'Music', 'Entertainment', 'News'];
+            const catNames = {
+                'all': 'Barchasi',
+                'General': 'Milliy & Asosiy',
+                'Movies': 'Kinolar',
+                'Kids': 'Bolalar',
+                'Sports': 'Sport',
+                'Music': 'Musiqa',
+                'Entertainment': 'Ko\'ngilochar',
+                'News': 'Yangiliklar'
+            };
+
+            const filtered = selectedTvCategory === 'all'
+                ? currentTvChannels
+                : currentTvChannels.filter(c => c.category && c.category.toLowerCase().includes(selectedTvCategory.toLowerCase()));
+
+            let html = `
+                <div class="tv-player-card">
+                    <div class="tv-video-wrapper">
+                        <video id="tvLivePlayer" class="tv-video-element" controls playsinline autoplay></video>
+                        <div class="tv-player-overlay">
+                            <span class="tv-live-pill"><span class="tv-live-dot"></span> LIVE EFIR</span>
+                            <span style="background:rgba(0,0,0,0.6);color:#38bdf8;font-size:10.5px;padding:3px 8px;border-radius:6px;font-weight:700;">HLS HD</span>
+                        </div>
+                    </div>
+                    <div class="tv-current-info">
+                        <div class="tv-current-channel">
+                            <img id="tvCurrentLogo" class="tv-current-logo" src="${curCh.logo || ''}" alt="Logo" onerror="this.src='https://via.placeholder.com/100?text=TV'">
+                            <div>
+                                <h4 id="tvCurrentName" class="tv-current-name">${curCh.name || 'Telekanal'}</h4>
+                                <p id="tvCurrentCat" class="tv-current-cat">${curCh.category || 'Jonli'} • JONLI EFIR</p>
+                            </div>
+                        </div>
+                        <button onclick="playTvStream('${curCh.id || ''}')" style="background:linear-gradient(135deg,#38bdf8,#6366f1);border:none;color:#fff;padding:8px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">
+                            <i data-lucide="play" style="width:14px;height:14px;"></i> Qayta yoqish
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-heading" style="margin-bottom:10px;">
+                    <h3><i data-lucide="tv"></i> O'zbekiston Telekanallari</h3>
+                    <span class="count-pill">${filtered.length} ta kanal</span>
+                </div>
+
+                <div class="category-pills" style="margin-bottom:14px;">
+                    ${cats.map(c => `
+                        <button class="cat-pill ${selectedTvCategory === c ? 'active' : ''}" onclick="switchTvCategory('${c}')">
+                            ${catNames[c] || c}
+                        </button>
+                    `).join('')}
+                </div>
+
+                <div class="tv-channels-grid">
+                    ${filtered.map(ch => {
+                        const isPlaying = curCh.id === ch.id;
+                        return `
+                            <div class="tv-card ${isPlaying ? 'active-playing' : ''}" data-id="${ch.id}" onclick="playTvStream('${ch.id}')">
+                                ${isPlaying ? '<span class="tv-playing-indicator"><i data-lucide="volume-2" style="width:14px;height:14px;"></i></span>' : ''}
+                                <img class="tv-card-logo" src="${ch.logo}" alt="${ch.name}" onerror="this.src='https://via.placeholder.com/100?text=TV'">
+                                <h5 class="tv-card-name">${ch.name}</h5>
+                                <span class="tv-card-cat">${ch.category || 'Jonli'}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            container.innerHTML = html;
+            refreshIcons();
+
+            setTimeout(() => {
+                if (curCh.stream_url) {
+                    playTvStream(curCh.id);
+                }
+            }, 100);
+        }
+
     </script>
 </body>
 </html>
