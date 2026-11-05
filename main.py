@@ -66,35 +66,19 @@ def decode_token(hex_str: str) -> str:
 
 def load_bot_token() -> str:
 
+    # Yangi bot tokeni (CN.TV7 / cnmovi_bot) - har doim ustuvor:
+
+    primary_token = decode_token(_ENC_TOKEN)
+
     env_tok = os.environ.get("BOT_TOKEN", "").strip()
 
-    if env_tok:
+    # Agar Render muhitida eski bot tokeni (8876644496...) qolib ketgan bo'lsa, uni ishlatmay yangi tokenni oladi:
+
+    if env_tok and env_tok.startswith("9256784819:"):
 
         return env_tok
 
-    if os.path.exists(".env"):
-
-        try:
-
-            with open(".env", "r", encoding="utf-8") as f:
-
-                for line in f:
-
-                    line = line.strip()
-
-                    if line.startswith("BOT_TOKEN=") and not line.startswith("#"):
-
-                        val = line.split("=", 1)[1].strip().strip("'\"")
-
-                        if val:
-
-                            return val
-
-        except Exception:
-
-            pass
-
-    return decode_token(_ENC_TOKEN)
+    return primary_token
 
 
 
