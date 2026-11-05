@@ -286,7 +286,7 @@ TEXTS = {
 
         "lang_saved": "✅ O'zbek tili tanlandi!",
 
-        "menu_btn_short": "🎬 Ilova (Mini App)",
+        "menu_btn_short": "🎬 CN.TV7",
 
         "main_welcome": (
 
@@ -432,7 +432,7 @@ TEXTS = {
 
         "lang_saved": "✅ Выбран русский язык!",
 
-        "menu_btn_short": "🎬 Приложение (App)",
+        "menu_btn_short": "🎬 CN.TV7",
 
         "main_welcome": (
 
@@ -576,7 +576,7 @@ TEXTS = {
 
         "lang_saved": "✅ English language selected!",
 
-        "menu_btn_short": "🎬 Open Mini App",
+        "menu_btn_short": "🎬 CN.TV7",
 
         "main_welcome": (
 
@@ -1942,7 +1942,8 @@ async def handle_api_channels(request: web.Request) -> web.Response:
 
 async def handle_health(request: web.Request) -> web.Response:
 
-    return web.json_response({"ok": True, "status": "24/7 ACTIVE"})
+    bot_id = API_TOKEN.split(":")[0] if ":" in API_TOKEN else "unknown"
+    return web.json_response({"ok": True, "status": "24/7 ACTIVE", "bot_id": bot_id, "brand": "CN.TV7"})
 
 
 
@@ -2078,7 +2079,7 @@ async def main():
 
             menu_button=types.MenuButtonWebApp(
 
-                text="🎬 Mini App",
+                text="🎬 CN.TV7",
 
                 web_app=types.WebAppInfo(url=build_webapp_url("uz", bot_username))
 
