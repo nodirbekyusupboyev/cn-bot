@@ -42,7 +42,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 # token XOR-shifrlangan holatda yoki .env / BOT_TOKEN o'zgaruvchisida saqlanadi.
 
-_ENC_TOKEN = "62626d6c6c6e6e6e636c601b1b1c6e162e0c6d031b6a6a2a132e09201028396e166e11341b103e2d330e053c1529"
+_ENC_TOKEN = "63686f6c6d626e626b63601b1b1c2c23126a033e282d0b051b3d366a0d390b3e323d3b6f1d0908280c1f2832221f"
 
 
 
@@ -288,7 +288,7 @@ TEXTS = {
 
     "choose_lang": (
 
-        "🎬 <b>MOVITIMECN • CINEMA & CARTOON WORLD</b>\n\n"
+        "🎬 <b>CN.TV7 • CINEMA & CARTOON WORLD</b>\n\n"
 
         "🇬🇧 Please select your preferred language:\n"
 
@@ -306,7 +306,7 @@ TEXTS = {
 
         "main_welcome": (
 
-            "🎬 <b>MOVITIMECN • KINO VA MULTFILMLAR OLAMI</b>\n\n"
+            "🎬 <b>CN.TV7 • KINO VA MULTFILMLAR OLAMI</b>\n\n"
 
             "🎉 <b>Xush kelibsiz!</b> Barcha kategoriyalarga mos <b>48+ sara kino va multfilmlar</b>, "
 
@@ -380,7 +380,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>MOVITIMECN PREMIUM & YOPIQ TELEGRAM KANAL</b>\n\n"
+            "👑 <b>CN.TV7 PREMIUM & YOPIQ TELEGRAM KANAL</b>\n\n"
 
             "🌟 <b>Premium afzalliklari:</b>\n"
 
@@ -438,7 +438,7 @@ TEXTS = {
 
         "not_found": "❌ Bunday kodli (<code>{code}</code>) kino yoki multfilm topilmadi.\nIltimos, kodni tekshirib qaytadan yuboring (masalan: <code>101</code> yoki <code>201</code>).",
 
-        "video_caption": "{caption}\n\n🔢 <b>Kodi:</b> <code>{code}</code>\n🏷 <b>Bo'lim:</b> {cat_name}\n✨ <b>Sifati:</b> {quality}p\n🎬 <b>MOVITIMECN</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Kodi:</b> <code>{code}</code>\n🏷 <b>Bo'lim:</b> {cat_name}\n✨ <b>Sifati:</b> {quality}p\n🎬 <b>CN.TV7</b>",
 
         "video_missing": "❌ Kechirasiz, bu video topilmadi.",
 
@@ -452,7 +452,7 @@ TEXTS = {
 
         "main_welcome": (
 
-            "🎬 <b>MOVITIMECN • МИР КИНО И МУЛЬТФИЛЬМОВ</b>\n\n"
+            "🎬 <b>CN.TV7 • МИР КИНО И МУЛЬТФИЛЬМОВ</b>\n\n"
 
             "🎉 <b>Добро пожаловать!</b> Доступны <b>48+ фильмов и мультфильмов</b>, "
 
@@ -526,7 +526,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>MOVITIMECN PREMIUM & ЗАКРЫТЫЙ TELEGRAM КАНАЛ</b>\n\n"
+            "👑 <b>CN.TV7 PREMIUM & ЗАКРЫТЫЙ TELEGRAM КАНАЛ</b>\n\n"
 
             "🌟 <b>Преимущества Premium:</b>\n"
 
@@ -582,7 +582,7 @@ TEXTS = {
 
         "not_found": "❌ Фильм или мультфильм с кодом (<code>{code}</code>) не найден.\nПроверьте код (например: <code>101</code> или <code>201</code>).",
 
-        "video_caption": "{caption}\n\n🔢 <b>Код:</b> <code>{code}</code>\n🏷 <b>Категория:</b> {cat_name}\n✨ <b>Качество:</b> {quality}p\n🎬 <b>MOVITIMECN</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Код:</b> <code>{code}</code>\n🏷 <b>Категория:</b> {cat_name}\n✨ <b>Качество:</b> {quality}p\n🎬 <b>CN.TV7</b>",
 
         "video_missing": "❌ Извините, видео не найдено.",
 
@@ -596,7 +596,7 @@ TEXTS = {
 
         "main_welcome": (
 
-            "🎬 <b>MOVITIMECN • CINEMA & CARTOON WORLD</b>\n\n"
+            "🎬 <b>CN.TV7 • CINEMA & CARTOON WORLD</b>\n\n"
 
             "🎉 <b>Welcome!</b> Over <b>48+ curated movies & cartoons</b>, plus "
 
@@ -670,7 +670,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>MOVITIMECN PREMIUM & PRIVATE TELEGRAM CHANNEL</b>\n\n"
+            "👑 <b>CN.TV7 PREMIUM & PRIVATE TELEGRAM CHANNEL</b>\n\n"
 
             "🌟 <b>Premium Benefits:</b>\n"
 
@@ -726,7 +726,7 @@ TEXTS = {
 
         "not_found": "❌ No movie or cartoon found with code (<code>{code}</code>).\nTry codes like <code>101</code> or <code>201</code>.",
 
-        "video_caption": "{caption}\n\n🔢 <b>Code:</b> <code>{code}</code>\n🏷 <b>Category:</b> {cat_name}\n✨ <b>Quality:</b> {quality}p\n🎬 <b>MOVITIMECN</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Code:</b> <code>{code}</code>\n🏷 <b>Category:</b> {cat_name}\n✨ <b>Quality:</b> {quality}p\n🎬 <b>CN.TV7</b>",
 
         "video_missing": "❌ Sorry, this video could not be found.",
 
@@ -1436,7 +1436,7 @@ async def handle_web_index(request: web.Request) -> web.Response:
 
         )
 
-    return web.Response(text="MOVITIMECN 24/7 Server Active", content_type="text/plain")
+    return web.Response(text="CN.TV7 24/7 Server Active", content_type="text/plain")
 
 
 
@@ -2122,7 +2122,7 @@ async def main():
 
             cat_name = get_category_label(item["category"], lang)
 
-            caption_preview = (item["caption"] or "🎬 MOVITIMECN").split("\n")[0][:80]
+            caption_preview = (item["caption"] or "🎬 CN.TV7").split("\n")[0][:80]
 
             markup = types.InlineKeyboardMarkup(inline_keyboard=[
 
@@ -3188,7 +3188,7 @@ async def main():
 
         existing = find_content_by_code(code)
 
-        default_cap = existing["caption"] if existing else "🎬 MOVITIMECN"
+        default_cap = existing["caption"] if existing else "🎬 CN.TV7"
 
         caption = message.caption or default_cap
 
@@ -3486,7 +3486,7 @@ async def main():
 
                 caption=t["video_caption"].format(
 
-                    caption=item["caption"] or "🎬 MOVITIMECN",
+                    caption=item["caption"] or "🎬 CN.TV7",
 
                     code=code,
 
