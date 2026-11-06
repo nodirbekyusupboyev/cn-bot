@@ -66,7 +66,7 @@ def decode_token(hex_str: str) -> str:
 
 def load_bot_token() -> str:
 
-    # Yangi bot tokeni (CN.TV7 / cnmovi_bot) - har doim ustuvor:
+    # Yangi bot tokeni (CNMOVI / cnmovi_bot) - har doim ustuvor:
 
     primary_token = decode_token(_ENC_TOKEN)
 
@@ -272,7 +272,7 @@ TEXTS = {
 
     "choose_lang": (
 
-        "🎬 <b>CN.TV7 • CINEMA & CARTOON WORLD</b>\n\n"
+        "🎬 <b>CNMOVI • CINEMA & CARTOON WORLD</b>\n\n"
 
         "🇬🇧 Please select your preferred language:\n"
 
@@ -286,11 +286,11 @@ TEXTS = {
 
         "lang_saved": "✅ O'zbek tili tanlandi!",
 
-        "menu_btn_short": "🎬 CN.TV7",
+        "menu_btn_short": "🎬 CNMOVI",
 
         "main_welcome": (
 
-            "🎬 <b>CN.TV7 • KINO VA MULTFILMLAR OLAMI</b>\n\n"
+            "🎬 <b>CNMOVI • KINO VA MULTFILMLAR OLAMI</b>\n\n"
 
             "🎉 <b>Xush kelibsiz!</b> Barcha kategoriyalarga mos <b>48+ sara kino va multfilmlar</b>, "
 
@@ -364,7 +364,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>CN.TV7 PREMIUM & YOPIQ TELEGRAM KANAL</b>\n\n"
+            "👑 <b>CNMOVI PREMIUM & YOPIQ TELEGRAM KANAL</b>\n\n"
 
             "🌟 <b>Premium afzalliklari:</b>\n"
 
@@ -422,7 +422,7 @@ TEXTS = {
 
         "not_found": "❌ Bunday kodli (<code>{code}</code>) kino yoki multfilm topilmadi.\nIltimos, kodni tekshirib qaytadan yuboring (masalan: <code>101</code> yoki <code>201</code>).",
 
-        "video_caption": "{caption}\n\n🔢 <b>Kodi:</b> <code>{code}</code>\n🏷 <b>Bo'lim:</b> {cat_name}\n✨ <b>Sifati:</b> {quality}p\n🎬 <b>CN.TV7</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Kodi:</b> <code>{code}</code>\n🏷 <b>Bo'lim:</b> {cat_name}\n✨ <b>Sifati:</b> {quality}p\n🎬 <b>CNMOVI</b>",
 
         "video_missing": "❌ Kechirasiz, bu video topilmadi.",
 
@@ -432,11 +432,11 @@ TEXTS = {
 
         "lang_saved": "✅ Выбран русский язык!",
 
-        "menu_btn_short": "🎬 CN.TV7",
+        "menu_btn_short": "🎬 CNMOVI",
 
         "main_welcome": (
 
-            "🎬 <b>CN.TV7 • МИР КИНО И МУЛЬТФИЛЬМОВ</b>\n\n"
+            "🎬 <b>CNMOVI • МИР КИНО И МУЛЬТФИЛЬМОВ</b>\n\n"
 
             "🎉 <b>Добро пожаловать!</b> Доступны <b>48+ фильмов и мультфильмов</b>, "
 
@@ -510,7 +510,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>CN.TV7 PREMIUM & ЗАКРЫТЫЙ TELEGRAM КАНАЛ</b>\n\n"
+            "👑 <b>CNMOVI PREMIUM & ЗАКРЫТЫЙ TELEGRAM КАНАЛ</b>\n\n"
 
             "🌟 <b>Преимущества Premium:</b>\n"
 
@@ -566,7 +566,7 @@ TEXTS = {
 
         "not_found": "❌ Фильм или мультфильм с кодом (<code>{code}</code>) не найден.\nПроверьте код (например: <code>101</code> или <code>201</code>).",
 
-        "video_caption": "{caption}\n\n🔢 <b>Код:</b> <code>{code}</code>\n🏷 <b>Категория:</b> {cat_name}\n✨ <b>Качество:</b> {quality}p\n🎬 <b>CN.TV7</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Код:</b> <code>{code}</code>\n🏷 <b>Категория:</b> {cat_name}\n✨ <b>Качество:</b> {quality}p\n🎬 <b>CNMOVI</b>",
 
         "video_missing": "❌ Извините, видео не найдено.",
 
@@ -576,11 +576,11 @@ TEXTS = {
 
         "lang_saved": "✅ English language selected!",
 
-        "menu_btn_short": "🎬 CN.TV7",
+        "menu_btn_short": "🎬 CNMOVI",
 
         "main_welcome": (
 
-            "🎬 <b>CN.TV7 • CINEMA & CARTOON WORLD</b>\n\n"
+            "🎬 <b>CNMOVI • CINEMA & CARTOON WORLD</b>\n\n"
 
             "🎉 <b>Welcome!</b> Over <b>48+ curated movies & cartoons</b>, plus "
 
@@ -654,7 +654,7 @@ TEXTS = {
 
         "premium_text": (
 
-            "👑 <b>CN.TV7 PREMIUM & PRIVATE TELEGRAM CHANNEL</b>\n\n"
+            "👑 <b>CNMOVI PREMIUM & PRIVATE TELEGRAM CHANNEL</b>\n\n"
 
             "🌟 <b>Premium Benefits:</b>\n"
 
@@ -710,7 +710,7 @@ TEXTS = {
 
         "not_found": "❌ No movie or cartoon found with code (<code>{code}</code>).\nTry codes like <code>101</code> or <code>201</code>.",
 
-        "video_caption": "{caption}\n\n🔢 <b>Code:</b> <code>{code}</code>\n🏷 <b>Category:</b> {cat_name}\n✨ <b>Quality:</b> {quality}p\n🎬 <b>CN.TV7</b>",
+        "video_caption": "{caption}\n\n🔢 <b>Code:</b> <code>{code}</code>\n🏷 <b>Category:</b> {cat_name}\n✨ <b>Quality:</b> {quality}p\n🎬 <b>CNMOVI</b>",
 
         "video_missing": "❌ Sorry, this video could not be found.",
 
@@ -1420,7 +1420,7 @@ async def handle_web_index(request: web.Request) -> web.Response:
 
         )
 
-    return web.Response(text="CN.TV7 24/7 Server Active", content_type="text/plain")
+    return web.Response(text="CNMOVI 24/7 Server Active", content_type="text/plain")
 
 
 
@@ -1943,7 +1943,7 @@ async def handle_api_channels(request: web.Request) -> web.Response:
 async def handle_health(request: web.Request) -> web.Response:
 
     bot_id = API_TOKEN.split(":")[0] if ":" in API_TOKEN else "unknown"
-    return web.json_response({"ok": True, "status": "24/7 ACTIVE", "bot_id": bot_id, "brand": "CN.TV7"})
+    return web.json_response({"ok": True, "status": "24/7 ACTIVE", "bot_id": bot_id, "brand": "CNMOVI"})
 
 
 
@@ -1989,6 +1989,7 @@ async def start_24_7_web_server() -> int:
 
     app.router.add_get("/lucide.min.js", handle_lucide_js)
 
+    app.router.add_get("/cnmovi_logo.png", handle_cntv_logo)
     app.router.add_get("/cntv_logo.png", handle_cntv_logo)
 
     app.router.add_get("/logo.png", handle_cntv_logo)
@@ -2079,7 +2080,7 @@ async def main():
 
             menu_button=types.MenuButtonWebApp(
 
-                text="🎬 CN.TV7",
+                text="🎬 CNMOVI",
 
                 web_app=types.WebAppInfo(url=build_webapp_url("uz", bot_username))
 
@@ -2107,7 +2108,7 @@ async def main():
 
             cat_name = get_category_label(item["category"], lang)
 
-            caption_preview = (item["caption"] or "🎬 CN.TV7").split("\n")[0][:80]
+            caption_preview = (item["caption"] or "🎬 CNMOVI").split("\n")[0][:80]
 
             markup = types.InlineKeyboardMarkup(inline_keyboard=[
 
@@ -3173,7 +3174,7 @@ async def main():
 
         existing = find_content_by_code(code)
 
-        default_cap = existing["caption"] if existing else "🎬 CN.TV7"
+        default_cap = existing["caption"] if existing else "🎬 CNMOVI"
 
         caption = message.caption or default_cap
 
@@ -3465,27 +3466,63 @@ async def main():
 
             await call.message.delete()
 
-            await call.message.answer_video(
+            try:
 
-                video=item["file_id"],
+                await call.message.answer_video(
 
-                caption=t["video_caption"].format(
+                    video=item["file_id"],
 
-                    caption=item["caption"] or "🎬 CN.TV7",
+                    caption=t["video_caption"].format(
 
-                    code=code,
+                        caption=item["caption"] or "🎬 CNMOVI",
 
-                    cat_name=cat_name,
+                        code=code,
 
-                    quality=quality
+                        cat_name=cat_name,
 
-                ),
+                        quality=quality
 
-                parse_mode="HTML"
+                    ),
 
-            )
+                    parse_mode="HTML"
 
-            await call.answer()
+                )
+
+                await call.answer()
+
+            except Exception as e:
+
+                logging.warning(f"Video yuborishda xatolik: {e}")
+
+                watch_url = build_webapp_url(lang, bot_username, tab="home", user_id=user_id)
+
+                markup = types.InlineKeyboardMarkup(inline_keyboard=[
+
+                    [types.InlineKeyboardButton(text="🎬 CNMOVI Mini App da Ko'rish", web_app=types.WebAppInfo(url=watch_url))],
+
+                    [types.InlineKeyboardButton(text=t["btn_back"], callback_data="back_main")]
+
+                ])
+
+                await call.message.answer(
+
+                    f"🎬 <b>{item['caption']}</b>\n\n" +
+
+                    f"🔢 <b>Kodi:</b> <code>{code}</code>\n" +
+
+                    f"🏷 <b>Bo'lim:</b> {cat_name}\n" +
+
+                    f"✨ <b>Sifati:</b> {quality}\n\n" +
+
+                    f"🍿 <i>Kinoni CNMOVI Mini App orqali tomosha qilishingiz mumkin!</i>",
+
+                    reply_markup=markup,
+
+                    parse_mode="HTML"
+
+                )
+
+                await call.answer()
 
         else:
 
